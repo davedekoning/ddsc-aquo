@@ -5,5 +5,8 @@
 *.war
 *.ear
 
+# Dependencies #
+!lib/*.jar
+
 # Sensitive Data #
 persistence.xml

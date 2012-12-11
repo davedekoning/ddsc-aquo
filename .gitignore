@@ -4,3 +4,6 @@
 *.jar
 *.war
 *.ear
+
+# Sensitive Data #
+persistence.xml

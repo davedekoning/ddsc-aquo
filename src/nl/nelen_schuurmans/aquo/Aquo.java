@@ -4,42 +4,35 @@
  */
 package nl.nelen_schuurmans.aquo;
 
+import java.lang.Class;
+import org.apache.log4j.Logger;
+
 /**
  *
  * @author carsten.byrman@nelen-schuurmans.nl
  */
 public class Aquo {
 
+    private static final Logger logger = Logger.getLogger(Aquo.class);
+    private static String[] classNames = {
+        "nl.nelen_schuurmans.aquo.CompartmentSynchronizer",
+        "nl.nelen_schuurmans.aquo.MeasuringDeviceSynchronizer",
+        "nl.nelen_schuurmans.aquo.MeasuringMethodSynchronizer",
+        "nl.nelen_schuurmans.aquo.ParameterSynchronizer",
+        "nl.nelen_schuurmans.aquo.ProcessingMethodSynchronizer",
+        "nl.nelen_schuurmans.aquo.ReferenceFrameSynchronizer",
+        "nl.nelen_schuurmans.aquo.UnitSynchronizer"
+    };
+
     public static void main(String[] args) {
-//        try {
-//            synchronizeUnit();
-//        } catch (Exception ex) {
-//            logger.error("Error while synchronizing units", ex);
-//        }
-//        try {
-//            synchronizeMeasuringDevice();
-//        } catch (Exception ex) {
-//            logger.error("Error while synchronizing measuring devices", ex);
-//        }
-//        try {
-//            synchronizeMeasuringMethod();
-//        } catch (Exception ex) {
-//            logger.error("Error while synchronizing measuring methods", ex);
-//        }
-//        try {
-//            synchronizeProcessingMethod();
-//        } catch (Exception ex) {
-//            logger.error("Error while synchronizing processing methods", ex);
-//        }
-//        try {
-//            synchronizeCompartment();
-//        } catch (Exception ex) {
-//            logger.error("Error while synchronizing compartments", ex);
-//        }
-//        try {
-//            synchronizeReferenceFrame();
-//        } catch (Exception ex) {
-//            logger.error("Error while synchronizing reference frames", ex);
-//        }
+        for (String className : classNames) {
+            try {
+                Object object = Class.forName(className).newInstance();
+                Synchronizer synchronizer = (Synchronizer) object;
+                synchronizer.synchronize();
+            } catch (Exception ex) {
+                logger.error(ex);
+            }
+        }
     }
 }

@@ -15,16 +15,16 @@ import org.apache.log4j.Logger;
  * @author carsten.byrman@nelen-schuurmans.nl
  */
 public class CompartmentDAO implements GenericDAO<Compartment> {
-    
+
     private static final Logger logger = Logger.getLogger(CompartmentDAO.class);
-    
+
     @Override
     public void createOrUpdate(Collection<Compartment> compartments) {
         for (Compartment compartment : compartments) {
             createOrUpdate(compartment);
         }
     }
-    
+
     @Override
     public void createOrUpdate(Compartment compartment) {
         EntityManager em = JpaUtil.getCurrentEntityManager();
@@ -37,7 +37,7 @@ public class CompartmentDAO implements GenericDAO<Compartment> {
             compartment2.update(compartment);
         }
     }
-    
+
     @Override
     public Compartment findByCode(String code) {
         EntityManager em = JpaUtil.getCurrentEntityManager();
@@ -49,7 +49,7 @@ public class CompartmentDAO implements GenericDAO<Compartment> {
             return null;
         }
     }
-    
+
     @Override
     public Compartment mostRecent() {
         EntityManager em = JpaUtil.getCurrentEntityManager();

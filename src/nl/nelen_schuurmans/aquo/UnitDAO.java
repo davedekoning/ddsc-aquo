@@ -15,16 +15,16 @@ import org.apache.log4j.Logger;
  * @author carsten.byrman@nelen-schuurmans.nl
  */
 public class UnitDAO implements GenericDAO<Unit> {
-    
+
     private static final Logger logger = Logger.getLogger(UnitDAO.class);
-    
+
     @Override
     public void createOrUpdate(Collection<Unit> units) {
         for (Unit unit : units) {
             createOrUpdate(unit);
         }
     }
-    
+
     @Override
     public void createOrUpdate(Unit unit) {
         EntityManager em = JpaUtil.getCurrentEntityManager();
@@ -37,7 +37,7 @@ public class UnitDAO implements GenericDAO<Unit> {
             unit2.update(unit);
         }
     }
-    
+
     @Override
     public Unit findByCode(String code) {
         EntityManager em = JpaUtil.getCurrentEntityManager();
@@ -49,7 +49,7 @@ public class UnitDAO implements GenericDAO<Unit> {
             return null;
         }
     }
-    
+
     @Override
     public Unit mostRecent() {
         EntityManager em = JpaUtil.getCurrentEntityManager();

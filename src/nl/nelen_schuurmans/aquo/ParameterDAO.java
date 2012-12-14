@@ -15,16 +15,16 @@ import org.apache.log4j.Logger;
  * @author carsten.byrman@nelen-schuurmans.nl
  */
 public class ParameterDAO implements GenericDAO<Parameter> {
-    
+
     private static final Logger logger = Logger.getLogger(ParameterDAO.class);
-    
+
     @Override
     public void createOrUpdate(Collection<Parameter> parameters) {
         for (Parameter parameter : parameters) {
             createOrUpdate(parameter);
         }
     }
-    
+
     @Override
     public void createOrUpdate(Parameter parameter) {
         EntityManager em = JpaUtil.getCurrentEntityManager();
@@ -37,7 +37,7 @@ public class ParameterDAO implements GenericDAO<Parameter> {
             parameter2.update(parameter);
         }
     }
-    
+
     @Override
     public Parameter findByCode(String code) {
         EntityManager em = JpaUtil.getCurrentEntityManager();
@@ -49,7 +49,7 @@ public class ParameterDAO implements GenericDAO<Parameter> {
             return null;
         }
     }
-    
+
     @Override
     public Parameter mostRecent() {
         EntityManager em = JpaUtil.getCurrentEntityManager();

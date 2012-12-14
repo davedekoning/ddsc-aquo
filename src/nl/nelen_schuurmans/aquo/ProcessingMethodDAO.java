@@ -15,16 +15,16 @@ import org.apache.log4j.Logger;
  * @author carsten.byrman@nelen-schuurmans.nl
  */
 public class ProcessingMethodDAO implements GenericDAO<ProcessingMethod> {
-    
+
     private static final Logger logger = Logger.getLogger(ProcessingMethodDAO.class);
-    
+
     @Override
     public void createOrUpdate(Collection<ProcessingMethod> methods) {
         for (ProcessingMethod method : methods) {
             createOrUpdate(method);
         }
     }
-    
+
     @Override
     public void createOrUpdate(ProcessingMethod method) {
         EntityManager em = JpaUtil.getCurrentEntityManager();
@@ -37,7 +37,7 @@ public class ProcessingMethodDAO implements GenericDAO<ProcessingMethod> {
             method2.update(method);
         }
     }
-    
+
     @Override
     public ProcessingMethod findByCode(String code) {
         EntityManager em = JpaUtil.getCurrentEntityManager();
@@ -49,7 +49,7 @@ public class ProcessingMethodDAO implements GenericDAO<ProcessingMethod> {
             return null;
         }
     }
-    
+
     @Override
     public ProcessingMethod mostRecent() {
         EntityManager em = JpaUtil.getCurrentEntityManager();

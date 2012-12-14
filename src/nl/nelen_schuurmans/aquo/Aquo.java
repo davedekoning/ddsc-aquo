@@ -4,7 +4,6 @@
  */
 package nl.nelen_schuurmans.aquo;
 
-import java.lang.Class;
 import org.apache.log4j.Logger;
 
 /**

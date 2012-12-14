@@ -64,7 +64,7 @@ public class ParameterSynchronizer extends Synchronizer {
                 } else if (dataField.getName().equals("Groep")) {
                     StringField stringDataField = (StringField) dataField;
                     parameter.setGroup(stringDataField.getData());
-                } else if (dataField.getName().equals("SIKBid")) {
+                } else if (dataField.getName().equals("SIKBid") && !dataField.isIsNull()) {
                     IntegerField integerDataField = (IntegerField) dataField;
                     parameter.setSikbId(integerDataField.getData());
                 } else {

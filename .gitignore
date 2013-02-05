@@ -13,3 +13,6 @@ nbproject/private/
 
 # Sensitive Data #
 persistence.xml
+
+# Log Files #
+ddsc-aquo.log*

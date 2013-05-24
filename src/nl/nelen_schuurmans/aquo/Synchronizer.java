@@ -69,6 +69,14 @@ public abstract class Synchronizer {
     public static Data getTableChanges(String table, Date date)
             throws DomainTableServiceGetDomainTableChangesDomainTableFaultFaultFaultMessage {
 
+        // The web service will throw a fault if a future date is passed.
+        // Just skip the call and return an empty Data object.
+        
+        if (date.after(new Date())) {
+            logger.warn("CheckDate cannot be a future value => skip");
+            return new Data();
+        }
+        
         GetDomainTableChangesRequest request = new GetDomainTableChangesRequest();
         request.setDomaintableName(table);
         request.setCheckDate(date);

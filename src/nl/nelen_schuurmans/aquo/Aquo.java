@@ -30,7 +30,7 @@ public class Aquo {
                 Synchronizer synchronizer = (Synchronizer) object;
                 synchronizer.synchronize();
             } catch (Exception ex) {
-                logger.error(ex);
+                logger.error(className, ex);
             }
         }
     }
